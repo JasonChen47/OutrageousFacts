@@ -1,0 +1,6 @@
+framework module Pods_Outrageous_FactsTests {
+  umbrella header "Pods-Outrageous FactsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
