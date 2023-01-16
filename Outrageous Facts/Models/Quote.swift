@@ -55,6 +55,22 @@ extension Quote {
         Quote(quote: "The Roman military used thin wooden tablets for record-keeping"),
         Quote(quote: "Romans used metal strigils at their baths to help scrape off dirt"),
         Quote(quote: "Roman emperors were frequently murdered"),
-        Quote(quote: "Emperor Ashoka's daughter spread Buddhism to Sri Lanka")
+        Quote(quote: "Emperor Ashoka's daughter spread Buddhism to Sri Lanka"),
+        Quote(quote: "Between 235 and 284 CE, 25 different Roman emperors ruled"),
+        Quote(quote: "Diocletian retired to his palace in Croatia in 305 and grew cabbages"),
+        Quote(quote: "The Greek 'Chi-Rho' monogram was an important early Christian symbol"),
+        Quote(quote: "Napoleon was attacked by bunnies"),
+        Quote(quote: "Lincoln is in the wrestling hall of fame"),
+        Quote(quote: "No witches were burned at the stake during the Salem witch trials"),
+        Quote(quote: "Russia ran out of vodka at the end of WWII"),
+        Quote(quote: "Tablecloths were designed to be a communal napkin"),
+        Quote(quote: "The only WWII casualties on U.S. soil were from a Japanese balloon bomb"),
+        Quote(quote: "Mary I was the first sole ruling queen of England"),
+        Quote(quote: "The Doge of Venice was a title for the ruler of Venice"),
+        Quote(quote: "Meriwether Lewis from Lewis and Clark had depression"),
+        Quote(quote: "After Prince Albert died, Queen Victoria wore black every day"),
+        Quote(quote: "Typhoons prevented the Mongols from invading Japan"),
+        Quote(quote: "There were 8 Crusades"),
+        Quote(quote: "Stephen Hawking was born exactly 300 years after Galileo died")
     ]
 }

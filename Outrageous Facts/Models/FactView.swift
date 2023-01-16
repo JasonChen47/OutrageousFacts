@@ -32,9 +32,6 @@ struct FactView: View {
                         .padding(5)
                         .opacity(0.7)
                 }
-                Spacer()
-                    .frame(height: 50)
-                
             }
             Rectangle().fill(.linearGradient(
                 Gradient(colors:[gradientStart, gradientEnd]),
@@ -46,35 +43,37 @@ struct FactView: View {
             HStack {
                 VStack {
                     Spacer()
-                    Spacer()
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                        }) {
+                            Image(systemName: "info.circle")
+                        }
+                        .foregroundColor(.white)
+                        .font(.system(size: 32))
+                    }
+
                     Spacer()
                     Text(quote)
                         .foregroundColor(.white)
                         .font(.system(size: 32))
                         .multilineTextAlignment(.center)
                         .padding()
+                        .frame(width: UIScreen.main.bounds.size.width*0.9, height: UIScreen.main.bounds.size.width*0.9, alignment: .center)
                     Spacer()
-                    Spacer()
-                    Button(action: {
-                        randIdx = Int.random(in: 0...quoteCount-1)
-                        randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
-                        randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
-                    }) {
-                        Image(systemName: "rectangle.3.group.bubble.left")
+                    HStack {
+                        
+                        Button(action: {
+                            randIdx = Int.random(in: 0...quoteCount-1)
+                            randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
+                            randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
+                        }) {
+                            Image(systemName: "rectangle.3.group.bubble.left")
+                        }
                     }
                     .foregroundColor(.white)
                     .font(.system(size: 32))
                     Spacer()
-//                    HStack {
-//                        Button(action: {
-//
-//                        }) {
-//                            Image(systemName: "info.circle")
-//                        }
-//                        .foregroundColor(.white)
-//                        .font(.system(size: 32))
-//                        Spacer()
-//                    }
                 }
                 .padding()
             }
