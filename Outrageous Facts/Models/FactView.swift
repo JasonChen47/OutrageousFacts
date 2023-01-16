@@ -15,6 +15,7 @@ struct FactView: View {
     @State private var randIdx = Int.random(in: 0...Quote.sampleData.count-1)
     @State private var randColorIdx1 = Int.random(in: 0...colorArr.count-1)
     @State private var randColorIdx2 = Int.random(in: 0...colorArr.count-1)
+    @State private var isPresentingEditView = false
     
     var body: some View {
         let quoteCount = quoteData.count
@@ -46,17 +47,31 @@ struct FactView: View {
                     HStack{
                         Spacer()
                         Button(action: {
+                            isPresentingEditView = true
                         }) {
                             Image(systemName: "info.circle")
                         }
                         .foregroundColor(.white)
                         .font(.system(size: 32))
+                        .sheet(isPresented: $isPresentingEditView) {
+                            NavigationView {
+                                AboutView(gradientStart: Color.cyan, gradientEnd: Color.green)
+                                    .toolbar {
+                                        ToolbarItem(placement: .confirmationAction) {
+                                            Button("Done") {
+                                                isPresentingEditView = false
+                                            }
+                                            .foregroundColor(.white)
+                                        }
+                                    }
+                            }
+                        }
                     }
 
                     Spacer()
                     Text(quote)
                         .foregroundColor(.white)
-                        .font(.system(size: 32))
+                        .font(.system(size: 28))
                         .multilineTextAlignment(.center)
                         .padding()
                         .frame(width: UIScreen.main.bounds.size.width*0.9, height: UIScreen.main.bounds.size.width*0.9, alignment: .center)

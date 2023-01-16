@@ -21,6 +21,7 @@
 		F63C58892958DBF0007DF6B8 /* Outrageous_FactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C58882958DBF0007DF6B8 /* Outrageous_FactsUITests.swift */; };
 		F63C588B2958DBF0007DF6B8 /* Outrageous_FactsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C588A2958DBF0007DF6B8 /* Outrageous_FactsUITestsLaunchTests.swift */; };
 		F655BADE296CFA4600EFDCD3 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F655BADD296CFA4600EFDCD3 /* Quote.swift */; };
+		F6825CEB2974F57100E7FB0C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825CEA2974F57100E7FB0C /* AboutView.swift */; };
 		F6832D3529734251005A5E03 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6832D3429734251005A5E03 /* GADBannerViewController.swift */; };
 		F6DF53C9297326E40030222C /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = F6DF53C8297326E40030222C /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		F63C58882958DBF0007DF6B8 /* Outrageous_FactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outrageous_FactsUITests.swift; sourceTree = "<group>"; };
 		F63C588A2958DBF0007DF6B8 /* Outrageous_FactsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outrageous_FactsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F655BADD296CFA4600EFDCD3 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		F6825CEA2974F57100E7FB0C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F6832D3429734251005A5E03 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
 		F6DF53CA297329930030222C /* Outrageous-Facts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Outrageous-Facts-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F6342BE8295E335B00BF730B /* FactView.swift */,
+				F6825CEA2974F57100E7FB0C /* AboutView.swift */,
 				F6832D3429734251005A5E03 /* GADBannerViewController.swift */,
 				F655BADD296CFA4600EFDCD3 /* Quote.swift */,
 			);
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6825CEB2974F57100E7FB0C /* AboutView.swift in Sources */,
 				F655BADE296CFA4600EFDCD3 /* Quote.swift in Sources */,
 				F6342BE9295E335B00BF730B /* FactView.swift in Sources */,
 				F63C58722958DBEF007DF6B8 /* Persistence.swift in Sources */,
