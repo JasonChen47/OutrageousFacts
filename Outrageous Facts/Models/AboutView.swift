@@ -51,7 +51,7 @@ struct AboutView: View {
                     .font(.system(size: 20))
                     .padding()
                     .multilineTextAlignment(.center)
-                Text(verbatim: "And lastly, please leave us a 5-star review! :)")
+                Text(verbatim: "Also, if you have time, please leave us a 5-star review! :)")
                     .foregroundColor(.white)
                     .font(.system(size: 20))
                     .padding()
