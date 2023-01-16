@@ -10,6 +10,9 @@
 		13AB211E782E60B2588001D7 /* Pods_Outrageous_FactsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B99A46A5DE36A34B58150 /* Pods_Outrageous_FactsTests.framework */; };
 		AFBEAD5AA9DD52456827A8E2 /* Pods_Outrageous_Facts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EF312E5A6508001E5A9776 /* Pods_Outrageous_Facts.framework */; };
 		B1E60F17807C06689D4B26F8 /* Pods_Outrageous_Facts_Outrageous_FactsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826AF8279696345874213EFA /* Pods_Outrageous_Facts_Outrageous_FactsUITests.framework */; };
+		F60A8AC62976023F002E6635 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F60A8AC52976023F002E6635 /* Launch Screen.storyboard */; };
+		F60A8AC72976023F002E6635 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F60A8AC52976023F002E6635 /* Launch Screen.storyboard */; };
+		F60A8AC82976023F002E6635 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F60A8AC52976023F002E6635 /* Launch Screen.storyboard */; };
 		F6342BE9295E335B00BF730B /* FactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6342BE8295E335B00BF730B /* FactView.swift */; };
 		F63C58692958DBE9007DF6B8 /* Outrageous_FactsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C58682958DBE9007DF6B8 /* Outrageous_FactsApp.swift */; };
 		F63C586B2958DBE9007DF6B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C586A2958DBE9007DF6B8 /* ContentView.swift */; };
@@ -53,6 +56,7 @@
 		D2236DA590A4EC5CF470B7C8 /* Pods-Outrageous Facts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Outrageous Facts.debug.xcconfig"; path = "Target Support Files/Pods-Outrageous Facts/Pods-Outrageous Facts.debug.xcconfig"; sourceTree = "<group>"; };
 		DA915A25A5FAB4EE208284B1 /* Pods-Outrageous Facts-Outrageous FactsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Outrageous Facts-Outrageous FactsUITests.release.xcconfig"; path = "Target Support Files/Pods-Outrageous Facts-Outrageous FactsUITests/Pods-Outrageous Facts-Outrageous FactsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DFA65E1510762BB75C0F3055 /* Pods-Outrageous FactsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Outrageous FactsTests.debug.xcconfig"; path = "Target Support Files/Pods-Outrageous FactsTests/Pods-Outrageous FactsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F60A8AC52976023F002E6635 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		F6342BE8295E335B00BF730B /* FactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactView.swift; sourceTree = "<group>"; };
 		F63C58652958DBE9007DF6B8 /* Outrageous Facts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outrageous Facts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F63C58682958DBE9007DF6B8 /* Outrageous_FactsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outrageous_FactsApp.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 		F63C585C2958DBE9007DF6B8 = {
 			isa = PBXGroup;
 			children = (
+				F60A8AC52976023F002E6635 /* Launch Screen.storyboard */,
 				F63C58672958DBE9007DF6B8 /* Outrageous Facts */,
 				F63C587D2958DBF0007DF6B8 /* Outrageous FactsTests */,
 				F63C58872958DBF0007DF6B8 /* Outrageous FactsUITests */,
@@ -312,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F60A8AC62976023F002E6635 /* Launch Screen.storyboard in Resources */,
 				F63C58702958DBEF007DF6B8 /* Preview Assets.xcassets in Resources */,
 				F63C586D2958DBEF007DF6B8 /* Assets.xcassets in Resources */,
 			);
@@ -321,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F60A8AC72976023F002E6635 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F60A8AC82976023F002E6635 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,23 +614,28 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"Outrageous Facts/Preview Content\"";
+				DEVELOPMENT_TEAM = 3P576PW62C;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Outrageous-Facts-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = History;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "SolvusInc.Outrageous-Facts";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SolvusInc.Outrageous-Facts-History";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -637,22 +650,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_ASSET_PATHS = "\"Outrageous Facts/Preview Content\"";
+				DEVELOPMENT_TEAM = 3P576PW62C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Outrageous-Facts-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = History;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "SolvusInc.Outrageous-Facts";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "SolvusInc.Outrageous-Facts-History";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
