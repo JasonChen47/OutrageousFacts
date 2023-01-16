@@ -55,7 +55,7 @@ struct FactView: View {
                         .font(.system(size: 32))
                         .sheet(isPresented: $isPresentingEditView) {
                             NavigationView {
-                                AboutView(gradientStart: Color.cyan, gradientEnd: Color.green)
+                                AboutView(gradientStart: gradientStart, gradientEnd: gradientEnd)
                                     .toolbar {
                                         ToolbarItem(placement: .confirmationAction) {
                                             Button("Done") {
@@ -67,7 +67,6 @@ struct FactView: View {
                             }
                         }
                     }
-
                     Spacer()
                     Text(quote)
                         .foregroundColor(.white)
