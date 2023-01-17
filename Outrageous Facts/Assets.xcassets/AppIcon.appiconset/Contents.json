@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "AppIcon_contrast.png",
+      "filename" : "appIcon_gradient_noAlpha_nonTransparent.jpg",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
