@@ -107,6 +107,6 @@ struct FactView: View {
 
 struct FactView_Previews: PreviewProvider {
     static var previews: some View {
-        FactView(quoteData: Quote.sampleData)
+            FactView(quoteData: Quote.sampleData)
     }
 }

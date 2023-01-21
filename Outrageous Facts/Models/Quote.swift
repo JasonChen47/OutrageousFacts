@@ -216,7 +216,7 @@ extension Quote {
         Quote(quote: "China ceded five treaty ports as well as Hong Kong after losing the First Opium War in 1842"),
         Quote(quote: "Chloroform started being used as a medical anesthetic in 1841"),
         Quote(quote: "Ireland became severely depopulated after emigration during the Great Famine 1845-1854"),
-        Quote(quote: "After gold is discovered in Australia in 1851, 500,000 imigrants arrive in the next 10 years"),
+        Quote(quote: "After gold was discovered in Australia in 1851, 500,000 immigrants arrived in the next 10 years"),
         Quote(quote: "After the Qing Dynasty is overthrown in 1911, China forms the new Chinese Republic"),
         Quote(quote: "Ford Motor Co. installs the first moving assembly line in 1913, and by 1927, there is 1 car for every 6 Americans"),
         Quote(quote: "The British Empire reaches its greatest extent in 1922, covering 1/4th of the world's land"),
