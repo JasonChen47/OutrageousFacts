@@ -28,7 +28,10 @@ struct Outrageous_FactsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            FactView(quoteData: Quote.sampleData)
+            NavigationView {
+                FactView(quoteData: Quote.sampleData)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

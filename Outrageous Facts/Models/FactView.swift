@@ -107,6 +107,9 @@ struct FactView: View {
 
 struct FactView_Previews: PreviewProvider {
     static var previews: some View {
+        NavigationView {
             FactView(quoteData: Quote.sampleData)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
