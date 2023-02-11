@@ -26,6 +26,7 @@
 		F655BADE296CFA4600EFDCD3 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = F655BADD296CFA4600EFDCD3 /* Quote.swift */; };
 		F6825CEB2974F57100E7FB0C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6825CEA2974F57100E7FB0C /* AboutView.swift */; };
 		F6832D3529734251005A5E03 /* GADBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6832D3429734251005A5E03 /* GADBannerViewController.swift */; };
+		F68E83D62990A80900883CD7 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E83D52990A80900883CD7 /* Notification.swift */; };
 		F6DF53C9297326E40030222C /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = F6DF53C8297326E40030222C /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		F655BADD296CFA4600EFDCD3 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		F6825CEA2974F57100E7FB0C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F6832D3429734251005A5E03 /* GADBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADBannerViewController.swift; sourceTree = "<group>"; };
+		F68E83D52990A80900883CD7 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		F6DF53CA297329930030222C /* Outrageous-Facts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Outrageous-Facts-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				F6825CEA2974F57100E7FB0C /* AboutView.swift */,
 				F6832D3429734251005A5E03 /* GADBannerViewController.swift */,
 				F655BADD296CFA4600EFDCD3 /* Quote.swift */,
+				F68E83D52990A80900883CD7 /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				F6342BE9295E335B00BF730B /* FactView.swift in Sources */,
 				F63C58722958DBEF007DF6B8 /* Persistence.swift in Sources */,
 				F63C586B2958DBE9007DF6B8 /* ContentView.swift in Sources */,
+				F68E83D62990A80900883CD7 /* Notification.swift in Sources */,
 				F63C58692958DBE9007DF6B8 /* Outrageous_FactsApp.swift in Sources */,
 				F6832D3529734251005A5E03 /* GADBannerViewController.swift in Sources */,
 				F63C58752958DBF0007DF6B8 /* Outrageous_Facts.xcdatamodeld in Sources */,
@@ -633,7 +637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SolvusInc.Outrageous-Facts-History";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -668,7 +672,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "SolvusInc.Outrageous-Facts-History";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

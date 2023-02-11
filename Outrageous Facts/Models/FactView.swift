@@ -12,10 +12,17 @@ import UIKit
 struct FactView: View {
     
     var quoteData: [Quote] = Quote.sampleData
-    @State private var randIdx = Int.random(in: 0...Quote.sampleData.count-1)
+    @Binding var randIdx: Int
+    
     @State private var randColorIdx1 = Int.random(in: 0...colorArr.count-1)
     @State private var randColorIdx2 = Int.random(in: 0...colorArr.count-1)
     @State private var isPresentingEditView = false
+    
+    
+    func scheduleNotification() {
+        let notification = Notification()
+        notification.prepNotification(randIdx: $randIdx)
+    }
     
     var body: some View {
         let quoteCount = quoteData.count
@@ -76,7 +83,6 @@ struct FactView: View {
                         .frame(width: UIScreen.main.bounds.size.width*0.9, height: UIScreen.main.bounds.size.width*0.9, alignment: .center)
                     Spacer()
                     HStack {
-                        
                         Button(action: {
                             randIdx = Int.random(in: 0...quoteCount-1)
                             randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
@@ -108,7 +114,7 @@ struct FactView: View {
 struct FactView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FactView(quoteData: Quote.sampleData)
+            FactView(quoteData: Quote.sampleData, randIdx: .constant(1))
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
