@@ -20,7 +20,9 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         let bannerSize = adSize
         let viewController = UIViewController()
         banner.adSize = bannerSize
+        // Actual ad unit ID
         banner.adUnitID = "ca-app-pub-2473443487936328/6644981588"
+        // Sample ad unit ID
 //        banner.adUnitID = "ca-app-pub-3940256099942544/6300978111"
         banner.rootViewController = viewController
         viewController.view.addSubview(banner)
