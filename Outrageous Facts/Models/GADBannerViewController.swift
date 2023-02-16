@@ -21,6 +21,7 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         let viewController = UIViewController()
         banner.adSize = bannerSize
         banner.adUnitID = "ca-app-pub-2473443487936328/6644981588"
+//        banner.adUnitID = "ca-app-pub-3940256099942544/6300978111"
         banner.rootViewController = viewController
         viewController.view.addSubview(banner)
         viewController.view.frame = CGRect(origin: .zero, size: bannerSize.size)
@@ -35,8 +36,6 @@ struct GADBannerViewController: UIViewControllerRepresentable {
     }
 }
 
-
-
 struct Banner_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
@@ -45,3 +44,7 @@ struct Banner_Previews: PreviewProvider {
         }
     }
 }
+
+
+
+
