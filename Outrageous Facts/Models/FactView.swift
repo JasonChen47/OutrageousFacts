@@ -75,6 +75,7 @@ struct FactView: View {
                         }
                     }
                     Spacer()
+                    // Historical fact
                     Text(quote)
                         .foregroundColor(.white)
                         .font(.system(size: 28))
@@ -114,7 +115,7 @@ struct FactView: View {
 struct FactView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FactView(quoteData: Quote.sampleData, randIdx: .constant(1))
+            FactView(quoteData: Quote.sampleData, randIdx: .constant(10))
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
