@@ -14,7 +14,7 @@ struct FactView: View {
     @State private var randColorIdx1 = Int.random(in: 0...colorArr.count-1)
     @State private var randColorIdx2 = Int.random(in: 0...colorArr.count-1)
     @State private var isPresentingEditView = false
-    @State private var quote = "...loading fact..."
+    @State private var quote = "... loading history fact ..."
     
     var body: some View {
         let localQuoteGen = RandQuote()
@@ -87,12 +87,10 @@ struct FactView: View {
                                 // Perform API request if no errors
                                 do {
                                     quote = try await APIRequest.getQuote()
-                                    print("78390")
                                 }
                                 // Assign the other quote if there's an error
                                 catch {
                                     quote = localQuoteGen.getQuote()
-                                    print("32840")
                                 }
                             }
                             // Change the gradient colors
@@ -114,12 +112,10 @@ struct FactView: View {
             .task {
                 do {
                     quote = try await APIRequest.getQuote()
-                    print("36482")
                 }
-                // Assign the other quote if there's an error
+                // Assign the locally stored quote if there's an error
                 catch {
                     quote = localQuoteGen.getQuote()
-                    print("93756")
                 }
             }
             VStack {

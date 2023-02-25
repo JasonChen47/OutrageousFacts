@@ -28,9 +28,10 @@ class APIRequest {
     // Main function to get quote from API
     static func getQuote(completion: @escaping (Result<String, Error>)->Void) {
         
-        // Use URL with random month and day
+        // Use URL with random month, day, and index into the array of facts
         let randMonth = String(Int.random(in: 1...12))
         let randDay = String(Int.random(in: 1...28))
+        let randIdx = Int.random(in: 0...10)
         let url = URL(string: "http://history.muffinlabs.com/date/" + randMonth + "/" + randDay)!
         
         // Start the async work
@@ -53,7 +54,7 @@ class APIRequest {
                         // JSON parse the data and return it
                         let codedData = data
                         let decodedData: JSONData = try JSONDecoder().decode(JSONData.self, from: codedData)
-                        let wholeFact = decodedData.data.Events[0].year + ": " + decodedData.data.Events[0].text
+                        let wholeFact = decodedData.data.Events[randIdx].year + ": " + decodedData.data.Events[randIdx].text
                         DispatchQueue.main.async {
                             completion(.success(wholeFact))
                         }
