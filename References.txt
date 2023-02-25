@@ -1,0 +1,12 @@
+REFERENCES
+
+Main facts from API: 
+1. https://history.muffinlabs.com
+
+Backup facts from local API (paraphrased quotes from the following sources): 
+1. https://parade.com/1099930/marynliles/history-facts/
+2. History of the World Map by Map by DK (Author), Smithsonian Institution (Contributor)
+3. Smithsonian Timelines of History by DK (Author)
+
+
+
