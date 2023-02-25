@@ -10,6 +10,7 @@ import SwiftUI
 struct AboutView: View {
     var gradientStart: Color
     var gradientEnd: Color
+    var bodyTextSize: CGFloat = 18
     var body: some View {
         ZStack {
             Color.black
@@ -22,14 +23,6 @@ struct AboutView: View {
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.7)
             VStack {
-//                HStack {
-//                    Text("About")
-//                        .foregroundColor(.white)
-//                        .font(.system(size: 40))
-//                        .bold()
-//                        .padding()
-//                    Spacer()
-//                }
                 Image("Logo")
                     .resizable()
                     .scaledToFit()
@@ -43,17 +36,22 @@ struct AboutView: View {
                     .bold()
                 Text("Our app aims to provide a catalog of accurate and inspiring historical facts to encourage users to question and explore the history they think they know.")
                     .foregroundColor(.white)
-                    .font(.system(size: 20))
+                    .font(.system(size: bodyTextSize))
                     .padding()
                     .multilineTextAlignment(.center)
                 Text(verbatim: "Contact us at solvusindustries@gmail.com")
                     .foregroundColor(.white)
-                    .font(.system(size: 20))
+                    .font(.system(size: bodyTextSize))
+                    .padding()
+                    .multilineTextAlignment(.center)
+                Text(verbatim: "References at https://tinyurl.com/historyfactsreferences")
+                    .foregroundColor(.white)
+                    .font(.system(size: bodyTextSize))
                     .padding()
                     .multilineTextAlignment(.center)
                 Text(verbatim: "Also, if you have time, please leave us a 5-star review! :)")
                     .foregroundColor(.white)
-                    .font(.system(size: 20))
+                    .font(.system(size: bodyTextSize))
                     .padding()
                     .multilineTextAlignment(.center)
             }
