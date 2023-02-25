@@ -13,8 +13,6 @@ import UserNotifications
 @main
 struct Outrageous_FactsApp: App {
     
-    @State var randIdx = Int.random(in: 0...Quote.sampleData.count-1)
-    
     //Use init() in place of ApplicationDidFinishLaunchWithOptions in App Delegate
     init() {
         if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
@@ -30,14 +28,14 @@ struct Outrageous_FactsApp: App {
         }
         
         let notification = Notification()
-        notification.prepNotification(randIdx: $randIdx)
+        notification.prepNotification()
         
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                FactView(quoteData: Quote.sampleData, randIdx: $randIdx)
+                FactView()
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }

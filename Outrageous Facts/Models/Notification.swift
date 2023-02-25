@@ -10,10 +10,7 @@ import UIKit
 import SwiftUI
 
 class Notification {
-    func prepNotification(randIdx: Binding<Int>) {
-
-//        var quoteData: [Quote] = Quote.sampleData
-//        let quote: String = quoteData[randIdx].quote
+    func prepNotification() {
         
         // Ask for permission
         let notificationCenter = UNUserNotificationCenter.current()
@@ -36,8 +33,12 @@ class Notification {
             dateMatching: dateComponents, repeats: true)
 //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (15), repeats: true)
         
+        // Remove previous requests
+        notificationCenter.removeAllPendingNotificationRequests()
+        
         // Register the request
-        let uuidString = UUID().uuidString
+//        let uuidString = UUID().uuidString
+        let uuidString = "8e5126a0-b172-11ed-afa1-0242ac120002"
         let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
         
         // Schedule the request with the system
