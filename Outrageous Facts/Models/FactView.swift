@@ -23,9 +23,17 @@ struct FactView: View {
         let gradientStart = FactView.colorArr[randColorIdx1]
         let gradientEnd = FactView.colorArr[randColorIdx2]
         ZStack {
-            // Background
+            
+            // Image
+            Image("City")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+            // Darkness shade
             Color.black
                 .edgesIgnoringSafeArea(.all)
+                .opacity(0.5)
             // Circle
             VStack {
                 HStack {
@@ -118,6 +126,7 @@ struct FactView: View {
                     quote = localQuoteGen.getQuote()
                 }
             }
+            // Advertisement
             VStack {
                 HStack {
                     GADBannerViewController()

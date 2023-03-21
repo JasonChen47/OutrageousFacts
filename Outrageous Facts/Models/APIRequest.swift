@@ -18,8 +18,8 @@ class APIRequest {
                 switch result {
                 case .failure(let error):
                     continuation.resume(throwing: error)
-                case .success(let scrums):
-                    continuation.resume(returning: scrums)
+                case .success(let quote):
+                    continuation.resume(returning: quote)
                 }
             }
         }

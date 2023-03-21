@@ -16,3 +16,4 @@ struct JSONData: Codable {
     var data: data
 }
 
+

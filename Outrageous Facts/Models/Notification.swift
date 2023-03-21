@@ -31,7 +31,12 @@ class Notification {
         dateComponents.timeZone = TimeZone(identifier: "UTC")
         let trigger = UNCalendarNotificationTrigger(
             dateMatching: dateComponents, repeats: true)
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: (15), repeats: true)
+
+        // For testing
+//        let date = Date().addingTimeInterval(15)
+//        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
         
         // Remove previous requests
         notificationCenter.removeAllPendingNotificationRequests()
