@@ -14,44 +14,13 @@ struct FactView: View {
     @State private var randColorIdx1 = Int.random(in: 0...colorArr.count-1)
     @State private var randColorIdx2 = Int.random(in: 0...colorArr.count-1)
     @State private var isPresentingEditView = false
-    @State private var quote = "... loading history fact ..."
+    @State private var quote = RandQuote.getQuote()
+    @State private var APIQuoteGen = APIRequest(quoteArr: [])
     
     var body: some View {
-        let localQuoteGen = RandQuote()
-//        var quote: String = localQuoteGen.getQuote()
-//        var quote: String = ""
         let gradientStart = FactView.colorArr[randColorIdx1]
         let gradientEnd = FactView.colorArr[randColorIdx2]
         ZStack {
-            
-            // Image
-            Image("City")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
-                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
-            // Darkness shade
-            Color.black
-                .edgesIgnoringSafeArea(.all)
-                .opacity(0.5)
-            // Circle
-            VStack {
-                HStack {
-                    Circle()
-                        .strokeBorder(lineWidth: 15)
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .opacity(0.7)
-                }
-            }
-            // Gradient colors
-            Rectangle().fill(.linearGradient(
-                Gradient(colors:[gradientStart, gradientEnd]),
-                startPoint: UnitPoint(x: 0.5, y: 0),
-                endPoint: UnitPoint(x: 0.5, y: 0.6)
-            ))
-                .edgesIgnoringSafeArea(.all)
-                .opacity(0.7)
             HStack {
                 VStack {
                     Spacer()
@@ -91,16 +60,8 @@ struct FactView: View {
                     // Button for random fact
                     HStack {
                         Button(action: {
-                            Task {
-                                // Perform API request if no errors
-                                do {
-                                    quote = try await APIRequest.getQuote()
-                                }
-                                // Assign the other quote if there's an error
-                                catch {
-                                    quote = localQuoteGen.getQuote()
-                                }
-                            }
+                            APIQuoteGen.checkFillArr()
+                            quote = APIQuoteGen.quickQuote()
                             // Change the gradient colors
                             DispatchQueue.main.async {
                                 randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
@@ -116,25 +77,47 @@ struct FactView: View {
                 }
                 .padding()
             }
-            // To assign quote initially
-            .task {
-                do {
-                    quote = try await APIRequest.getQuote()
-                }
-                // Assign the locally stored quote if there's an error
-                catch {
-                    quote = localQuoteGen.getQuote()
-                }
-            }
+
             // Advertisement
             VStack {
-                HStack {
-                    GADBannerViewController()
-                        .frame(width: UIScreen.main.bounds.size.width, height: 50)
-                }
+                GADBannerViewController()
+                    .frame(width: UIScreen.main.bounds.size.width, height: 50)
                 Spacer()
             }
         }
+        // Background
+        .background(
+            ZStack {
+                // Image
+                Image("Pyramid")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                    .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height, alignment: .center)
+                // Darkness shade
+                Color.black
+                    .edgesIgnoringSafeArea(.all)
+                    .opacity(0.5)
+                // Circle
+                VStack {
+                    HStack {
+                        Circle()
+                            .strokeBorder(lineWidth: 15)
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .opacity(0.7)
+                    }
+                }
+                // Gradient colors
+                Rectangle().fill(.linearGradient(
+                    Gradient(colors:[gradientStart, gradientEnd]),
+                    startPoint: UnitPoint(x: 0.5, y: 0),
+                    endPoint: UnitPoint(x: 0.5, y: 0.6)
+                ))
+                    .edgesIgnoringSafeArea(.all)
+                    .opacity(0.4)
+            }
+        )
     }
     static let colorArr = [Color(.yellow), Color(.blue), Color(.red), Color(.green), Color(.orange), Color(.purple), Color(.cyan)]
 }

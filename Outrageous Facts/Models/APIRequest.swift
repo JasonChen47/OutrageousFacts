@@ -10,9 +10,48 @@ import SwiftUI
 import UIKit
 
 class APIRequest {
+    var quoteArr: [String]
+    
+    init(quoteArr: [String]) {
+        self.quoteArr = quoteArr
+    }
+    
+    // To collect the quote from the array if it is populated. If it is not, take from the local storage of quotes.
+    func quickQuote() -> String {
+        var tempQuote = ""
+        self.checkFillArr()
+        if self.quoteArr.count > 0 {
+            tempQuote = quoteArr[0]
+            self.quoteArr.removeFirst()
+            print("12876")
+        }
+        else {
+            tempQuote = RandQuote.getQuote()
+            print("57623")
+        }
+        return tempQuote
+    }
+    
+    // Function to check if array is filled with 20 facts. If it is not, fill the array.
+    func checkFillArr() {
+        if self.quoteArr.count < 3 {
+            Task {
+                // Perform API request if no errors
+                do {
+                    let quote = try await self.getQuote()
+                    self.quoteArr.append(quote)
+                }
+                // Assign the other quote if there's an error
+                catch {
+                    print("array error")
+                }
+            }
+        }
+        print("The quoteArr count: \(self.quoteArr.count)")
+    }
     
     // Function to allow for try await call
-    static func getQuote() async throws -> String {
+    func getQuote() async throws -> String {
         try await withCheckedThrowingContinuation { continuation in
             getQuote { result in
                 switch result {
@@ -26,7 +65,7 @@ class APIRequest {
     }
     
     // Main function to get quote from API
-    static func getQuote(completion: @escaping (Result<String, Error>)->Void) {
+    func getQuote(completion: @escaping (Result<String, Error>)->Void) {
         
         // Use URL with random month, day, and index into the array of facts
         let randMonth = String(Int.random(in: 1...12))

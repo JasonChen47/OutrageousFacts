@@ -9,7 +9,7 @@ import Foundation
 
 class RandQuote {
     
-    func getQuote() -> String {
+    static func getQuote() -> String {
         let randIdx = Int.random(in: 0...Quote.sampleData.count-1)
         let quoteData: [Quote] = Quote.sampleData
         let quote: String = quoteData[randIdx].quote
