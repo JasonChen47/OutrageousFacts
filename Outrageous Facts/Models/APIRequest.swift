@@ -32,9 +32,9 @@ class APIRequest {
         return tempQuote
     }
     
-    // Function to check if array is filled with 20 facts. If it is not, fill the array.
+    // Function to check if array is filled with 3 facts. If it is not, add one fact to the array.
     func checkFillArr() {
-        if self.quoteArr.count < 3 {
+        if self.quoteArr.count < 20 {
             Task {
                 // Perform API request if no errors
                 do {

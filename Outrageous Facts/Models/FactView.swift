@@ -8,6 +8,8 @@
 import SwiftUI
 import GoogleMobileAds
 import UIKit
+import SnapToScroll
+import ScrollViewStyle
 
 struct FactView: View {
     
@@ -16,15 +18,50 @@ struct FactView: View {
     @State private var isPresentingEditView = false
     @State private var quote = RandQuote.getQuote()
     @State private var APIQuoteGen = APIRequest(quoteArr: [])
-    
+    @State private var backgroundString = "City"
+
     var body: some View {
         let gradientStart = FactView.colorArr[randColorIdx1]
         let gradientEnd = FactView.colorArr[randColorIdx2]
+        let screenWidth = UIScreen.main.bounds.size.width
+        let screenHeight = UIScreen.main.bounds.size.height
+        
         ZStack {
             HStack {
                 VStack {
-                    Spacer()
+                    // Advertisement
+                    VStack {
+                        GADBannerViewController()
+                            .frame(width: screenWidth, height: 50)
+                    }
                     HStack{
+                        // Change background
+                        Button(action: {
+                            backgroundString = "City"
+                        }) {
+                            Image(systemName: "building.2")
+                        }
+                        .foregroundColor(.white)
+                        .font(.system(size: 28))
+                        .padding()
+                        .background(
+                            Color.clear
+                                .overlay(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
+                                .opacity(0.3)
+                        )
+                        Button(action: {
+                            backgroundString = "Pyramid"
+                        }) {
+                            Image(systemName: "pyramid")
+                        }
+                        .foregroundColor(.white)
+                        .font(.system(size: 28))
+                        .padding()
+                        .background(
+                            Color.clear
+                                .overlay(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
+                                .opacity(0.3)
+                        )
                         // About page
                         Spacer()
                         Button(action: {
@@ -48,14 +85,7 @@ struct FactView: View {
                             }
                         }
                     }
-                    Spacer()
-                    // Historical fact
-                    Text(quote)
-                        .foregroundColor(.white)
-                        .font(.system(size: 21))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .frame(width: UIScreen.main.bounds.size.width*0.85, height: UIScreen.main.bounds.size.width*0.85, alignment: .center)
+                    .padding()
                     Spacer()
                     // Button for random fact
                     HStack {
@@ -73,23 +103,15 @@ struct FactView: View {
                     }
                     .foregroundColor(.white)
                     .font(.system(size: 32))
-                    Spacer()
                 }
-                .padding()
             }
-
-            // Advertisement
-            VStack {
-                GADBannerViewController()
-                    .frame(width: UIScreen.main.bounds.size.width, height: 50)
-                Spacer()
-            }
+            
         }
         // Background
         .background(
             ZStack {
                 // Image
-                Image("Pyramid")
+                Image(backgroundString)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
@@ -102,9 +124,9 @@ struct FactView: View {
                 VStack {
                     HStack {
                         Circle()
-                            .strokeBorder(lineWidth: 15)
+                            .strokeBorder(lineWidth: 10)
                             .foregroundColor(.white)
-                            .padding(5)
+                            .frame(width: screenWidth*0.95, height: screenWidth*0.95, alignment: .center)
                             .opacity(0.7)
                     }
                 }
@@ -116,13 +138,27 @@ struct FactView: View {
                 ))
                     .edgesIgnoringSafeArea(.all)
                     .opacity(0.4)
+                // Historical fact
+                Text(quote)
+                    .foregroundColor(.white)
+                    .font(.system(size: 20))
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .frame(width: screenWidth*0.85, height: screenWidth*0.85, alignment: .center)
             }
         )
     }
     static let colorArr = [Color(.yellow), Color(.blue), Color(.red), Color(.green), Color(.orange), Color(.purple), Color(.cyan)]
 }
 
-
+// To obtain the place that you scrolled to
+struct ViewOffsetKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value += nextValue()
+    }
+}
 
 struct FactView_Previews: PreviewProvider {
     static var previews: some View {
