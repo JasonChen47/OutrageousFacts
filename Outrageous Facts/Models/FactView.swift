@@ -24,7 +24,6 @@ struct FactView: View {
         let gradientStart = FactView.colorArr[randColorIdx1]
         let gradientEnd = FactView.colorArr[randColorIdx2]
         let screenWidth = UIScreen.main.bounds.size.width
-        let screenHeight = UIScreen.main.bounds.size.height
         
         ZStack {
             HStack {
@@ -52,7 +51,20 @@ struct FactView: View {
                         Button(action: {
                             backgroundString = "Pyramid"
                         }) {
-                            Image(systemName: "pyramid")
+                            Image(systemName: "sun.haze")
+                        }
+                        .foregroundColor(.white)
+                        .font(.system(size: 28))
+                        .padding()
+                        .background(
+                            Color.clear
+                                .overlay(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
+                                .opacity(0.3)
+                        )
+                        Button(action: {
+                            backgroundString = "Temple"
+                        }) {
+                            Image(systemName: "mountain.2")
                         }
                         .foregroundColor(.white)
                         .font(.system(size: 28))
