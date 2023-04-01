@@ -11,47 +11,46 @@ import UIKit
 
 class APIRequest {
     var quoteArr: [String]
+    var linkArr: [String]
     
-    init(quoteArr: [String]) {
+    init(quoteArr: [String], linkArr: [String]) {
         self.quoteArr = quoteArr
+        self.linkArr = linkArr
     }
     
     // To collect the quote from the array if it is populated. If it is not, take from the local storage of quotes.
-    func quickQuote() -> String {
-        var tempQuote = ""
-        self.checkFillArr()
-        if self.quoteArr.count > 0 {
-            tempQuote = quoteArr[0]
-            self.quoteArr.removeFirst()
-            print("12876")
-        }
-        else {
-            tempQuote = RandQuote.getQuote()
-            print("57623")
-        }
-        return tempQuote
+    func quickQuote() {
+        self.addFact()
     }
     
-    // Function to check if array is filled with 3 facts. If it is not, add one fact to the array.
-    func checkFillArr() {
-        if self.quoteArr.count < 20 {
-            Task {
-                // Perform API request if no errors
-                do {
-                    let quote = try await self.getQuote()
-                    self.quoteArr.append(quote)
-                }
-                // Assign the other quote if there's an error
-                catch {
-                    print("array error")
-                }
+    // Function to fetch from API add one fact to the end of the array. If there's an error, add the local fact.
+    func addFact() {
+        Task {
+            // Perform API request if no errors
+            let oldArrLength = self.quoteArr.count
+            do {
+                let quote = try await self.getQuote()
+                self.quoteArr.append(quote[0])
+                self.linkArr.append(quote[1])
+            }
+            // Assign the other quote if there's an error
+            catch {
+                let quote = RandQuote.getQuote()
+                self.quoteArr.append(quote)
+                self.linkArr.append("")
+            }
+            let newArrLength = self.quoteArr.count
+            if oldArrLength == newArrLength {
+                let quote = RandQuote.getQuote()
+                self.quoteArr.append(quote)
+                self.linkArr.append("")
             }
         }
         print("The quoteArr count: \(self.quoteArr.count)")
     }
     
     // Function to allow for try await call
-    func getQuote() async throws -> String {
+    func getQuote() async throws -> [String] {
         try await withCheckedThrowingContinuation { continuation in
             getQuote { result in
                 switch result {
@@ -65,7 +64,7 @@ class APIRequest {
     }
     
     // Main function to get quote from API
-    func getQuote(completion: @escaping (Result<String, Error>)->Void) {
+    func getQuote(completion: @escaping (Result<[String], Error>)->Void) {
         
         // Use URL with random month, day, and index into the array of facts
         let randMonth = String(Int.random(in: 1...12))
@@ -86,7 +85,7 @@ class APIRequest {
                         // Read the data. If no data, return an empty string.
                         guard let data = data else {
                             DispatchQueue.main.async {
-                                completion(.success(""))
+                                completion(.success(["", ""]))
                             }
                             return
                         }
@@ -94,8 +93,9 @@ class APIRequest {
                         let codedData = data
                         let decodedData: JSONData = try JSONDecoder().decode(JSONData.self, from: codedData)
                         let wholeFact = decodedData.data.Events[randIdx].year + ": " + decodedData.data.Events[randIdx].text
+                        let factURL = decodedData.data.Events[randIdx].links[0].link
                         DispatchQueue.main.async {
-                            completion(.success(wholeFact))
+                            completion(.success([wholeFact, factURL]))
                         }
                     }
                 }

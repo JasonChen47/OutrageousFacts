@@ -23,10 +23,11 @@ struct AboutView: View {
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.7)
             VStack {
-                Image("Logo")
+                Image("Ship")
                     .resizable()
                     .scaledToFit()
                     .frame(width: UIScreen.main.bounds.size.width*0.3, height: UIScreen.main.bounds.size.width*0.3, alignment: .center)
+                    .opacity(0.7)
                 Text("Historical Facts")
                     .foregroundColor(.white)
                     .font(.system(size: 32))
@@ -36,21 +37,31 @@ struct AboutView: View {
                     .font(.system(size: bodyTextSize))
                     .padding()
                     .multilineTextAlignment(.center)
-                Text(verbatim: "Contact us at solvusindustries@gmail.com")
-                    .foregroundColor(.white)
-                    .font(.system(size: bodyTextSize))
-                    .padding()
-                    .multilineTextAlignment(.center)
-                Text(verbatim: "References at https://tinyurl.com/historyfactsreferences")
-                    .foregroundColor(.white)
-                    .font(.system(size: bodyTextSize))
-                    .padding()
-                    .multilineTextAlignment(.center)
-                Text(verbatim: "Also, if you have time, please leave us a 5-star review! :)")
-                    .foregroundColor(.white)
-                    .font(.system(size: bodyTextSize))
-                    .padding()
-                    .multilineTextAlignment(.center)
+                VStack {
+                    Text(verbatim: "Contact us at")
+                        .foregroundColor(.white)
+                        .font(.system(size: bodyTextSize))                        .multilineTextAlignment(.center)
+                    Link("solvusindustries@gmail.com", destination: URL(string: "mailto:solvusindustries@gmail.com")!)
+                }
+                .padding()
+                VStack {
+                    Text(verbatim: "References at")
+                        .foregroundColor(.white)
+                        .font(.system(size: bodyTextSize))
+                        .multilineTextAlignment(.center)
+                    Link("https://tinyurl.com/historyfactsreferences", destination: URL(string: "https://tinyurl.com/historyfactsreferences")!)
+                }
+                .padding()
+                VStack {
+                    Text(verbatim: "Please leave us a 5-star review!")
+                        .foregroundColor(.white)
+                        .font(.system(size: bodyTextSize))
+                        
+                        .multilineTextAlignment(.center)
+                    Link("Link to app store", destination: URL(string: "https://apps.apple.com/us/app/historical-facts/id1665761564")!)
+                }
+                .padding()
+                
             }
         }
     }

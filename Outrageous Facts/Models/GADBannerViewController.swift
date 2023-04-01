@@ -23,7 +23,9 @@ struct GADBannerViewController: UIViewControllerRepresentable {
         // Actual ad unit ID
 //        banner.adUnitID = "ca-app-pub-2473443487936328/6644981588"
         // Sample ad unit ID
-        banner.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+//        banner.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+        // No ad
+        banner.adUnitID = ""
         banner.rootViewController = viewController
         viewController.view.addSubview(banner)
         viewController.view.frame = CGRect(origin: .zero, size: bannerSize.size)
