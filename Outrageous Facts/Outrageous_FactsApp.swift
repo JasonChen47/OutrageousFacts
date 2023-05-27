@@ -60,31 +60,31 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Remove previous requests first
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         
-        // Add requests for next 14 days with a different quote in each
-//        for numDays in (0...13) {
-//            let newDate = Calendar.current.date(byAdding: .day, value: numDays, to: Date())
-//            let dateDay = Calendar.current.component(.day, from: newDate!)
-//
-//            tempAPI.getQuoteString { stringTuple in
-//                let fact = stringTuple[0]
-//                let link = stringTuple[1]
-//                NotificationHandler.shared.addNotification(
-//                    id : "com.historicalfacts.notif.id" + String(dateDay),
-//                    title:"Historical Facts" , subtitle: fact, link: link, date: dateDay)
-//            }
-//        }
+        // Add requests for next 8 days with a different quote in each
+        for numDays in (0...7) {
+            let newDate = Calendar.current.date(byAdding: .day, value: numDays, to: Date())
+            let dateDay = Calendar.current.component(.day, from: newDate!)
+
+            tempAPI.getQuoteString { stringTuple in
+                let fact = stringTuple[0]
+                let link = stringTuple[1]
+                NotificationHandler.shared.addNotification(
+                    id : "com.historicalfacts.notif.id" + String(dateDay),
+                    title:"Historical Facts" , subtitle: fact, link: link, date: dateDay)
+            }
+        }
         
         // For testing
-        let numDays = 0
-        let newDate = Calendar.current.date(byAdding: .day, value: numDays, to: Date())
-        let dateDay = Calendar.current.component(.day, from: newDate!)
-        tempAPI.getQuoteString { stringTuple in
-            let fact = stringTuple[0]
-            let link = stringTuple[1]
-            NotificationHandler.shared.addNotification(
-                       id : "com.historicalfacts.notif.id" + String(dateDay),
-                       title:"Historical Facts" , subtitle: fact, link: link, date: dateDay)
-        }
+//        let numDays = 0
+//        let newDate = Calendar.current.date(byAdding: .day, value: numDays, to: Date())
+//        let dateDay = Calendar.current.component(.day, from: newDate!)
+//        tempAPI.getQuoteString { stringTuple in
+//            let fact = stringTuple[0]
+//            let link = stringTuple[1]
+//            NotificationHandler.shared.addNotification(
+//                       id : "com.historicalfacts.notif.id" + String(dateDay),
+//                       title:"Historical Facts" , subtitle: fact, link: link, date: dateDay)
+//        }
         
 
         return true

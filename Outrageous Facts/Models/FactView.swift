@@ -34,7 +34,18 @@ struct FactView: View {
                            for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay)))
         let pub2 = NotificationCenter.default.publisher(
                            for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 1)))
-        
+        let pub3 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 2)))
+        let pub4 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 3)))
+        let pub5 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 4)))
+        let pub6 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 5)))
+        let pub7 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 6)))
+        let pub8 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 7)))
         
         ZStack {
             HStack {
@@ -179,6 +190,114 @@ struct FactView: View {
             }
         }
         .onReceive(pub2){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub3){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub4){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub5){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub6){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub7){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub8){ data in
             // execute other methods when the
             // Combine publisher with the specified
             // name received

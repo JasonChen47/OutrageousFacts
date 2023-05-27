@@ -95,16 +95,16 @@ extension NotificationHandler {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.day = date
-        dateComponents.hour = 18
-        dateComponents.minute = 28
-        dateComponents.second = 50
+        dateComponents.hour = 21
+        dateComponents.minute = 8
+        dateComponents.second = 15
         
         // For actual implementation
-//        let trigger = UNCalendarNotificationTrigger(
-//            dateMatching: dateComponents, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents, repeats: false)
         
         // For testing (not for current setup -> just change the time above)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7, repeats: false)
         
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
