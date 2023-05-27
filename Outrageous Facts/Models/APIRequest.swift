@@ -18,6 +18,23 @@ class APIRequest {
         self.linkArr = linkArr
     }
     
+    // To just get the string from a API quote
+    func getQuoteString(completion: @escaping ([String])->()){
+        Task {
+            do {
+                let quote = try await self.getQuote()
+                let fact = quote[0]
+                let link = quote[1]
+                completion([fact, link])
+            }
+            // Assign the other quote if there's an error
+            catch {
+                let fact = RandQuote.getQuote()
+                completion([fact, ""])
+            }
+        }
+    }
+    
     // To collect the quote from the array if it is populated. If it is not, take from the local storage of quotes.
     func quickQuote() {
         self.addFact()

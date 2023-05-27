@@ -11,20 +11,30 @@ import UIKit
 
 struct FactView: View {
     
+    static let shared = FactView()
+    
     @State private var randColorIdx1 = Int.random(in: 0...colorArr.count-1)
     @State private var randColorIdx2 = Int.random(in: 0...colorArr.count-1)
     @State private var isPresentingEditView = false
     @State private var quote = RandQuote.getQuote()
-    @State private var APIQuoteGen = APIRequest(quoteArr: [RandQuote.getQuote(), RandQuote.getQuote(), RandQuote.getQuote()], linkArr: ["", "", ""])
-    @State private var backgroundString = "City"
+    @State private var APIQuoteGen = APIRequest(quoteArr: [RandQuote.getQuote(), RandQuote.getQuote()], linkArr: ["", ""])
+    @State var backgroundString = "City"
     @State private var selectedPageIndex = 0
     @State private var oldSelectedPageIndex = 0
     @State private var testString = ""
+    @State private var toShowAlert : Bool = false
+    @State private var refreshScreen: Bool = true
     
     var body: some View {
         let gradientStart = FactView.colorArr[randColorIdx1]
         let gradientEnd = FactView.colorArr[randColorIdx2]
         let screenWidth = UIScreen.main.bounds.size.width
+        let dateDay = Calendar.current.component(.day, from: Date())
+        let pub = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay)))
+        let pub2 = NotificationCenter.default.publisher(
+                           for: NSNotification.Name("com.historicalfacts.notif.id" + String(dateDay - 1)))
+        
         
         ZStack {
             HStack {
@@ -39,7 +49,7 @@ struct FactView: View {
                         Button(action: {
                             backgroundString = "City"
                         }) {
-                            Image(systemName: "cube")
+                            Image(systemName: "building.2")
                                 .foregroundColor(.white)
                                 .font(.system(size: 25))
                                 .padding()
@@ -52,7 +62,7 @@ struct FactView: View {
                         Button(action: {
                             backgroundString = "Pyramid"
                         }) {
-                            Image(systemName: "pyramid")
+                            Image(systemName: "sun.dust")
                                 .foregroundColor(.white)
                                 .font(.system(size: 25))
                                 .padding()
@@ -65,7 +75,7 @@ struct FactView: View {
                         Button(action: {
                             backgroundString = "Temple"
                         }) {
-                            Image(systemName: "leaf")
+                            Image(systemName: "mountain.2")
                                 .foregroundColor(.white)
                                 .font(.system(size: 25))
                                 .padding()
@@ -130,11 +140,67 @@ struct FactView: View {
                     }
                 }
             }
-            
+        }
+        .onAppear{
+            APIQuoteGen.addFact()
+            NotificationHandler.shared.requestPermission( onDeny: {
+                self.toShowAlert.toggle()
+            })
+            if NotificationHandler.shared.contentBody != "" {
+                print("13684")
+                APIQuoteGen.quoteArr = [NotificationHandler.shared.contentBody]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
+        }
+        .onReceive(pub2){ data in
+            // execute other methods when the
+            // Combine publisher with the specified
+            // name received
+            if let content = (data.object as? UNNotificationContent){
+                print("title:\(content.title), subtitle:\(content.body)")
+                APIQuoteGen.quoteArr = [content.body]
+                APIQuoteGen.linkArr = [""]
+                // Add fact if start with index 0 because it won't add during task for some reason
+                if selectedPageIndex == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
+                }
+                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+                selectedPageIndex = -1
+                selectedPageIndex += 1
+            }
         }
         // Start adding async fact
         .task {
             APIQuoteGen.addFact()
+            APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+            APIQuoteGen.linkArr.append("")
         }
         // Background
         .background(
@@ -189,6 +255,10 @@ struct FactView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .onChange(of: selectedPageIndex) { newValue in
                     // Only add if you reach an index greater than 2 less than the end of the array and swiping right
+                    if APIQuoteGen.quoteArr.count < 3 {
+                        APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                        APIQuoteGen.linkArr.append("")
+                    }
                     if newValue > (APIQuoteGen.quoteArr.count - 4)
                         && newValue > oldSelectedPageIndex
                     {
@@ -204,8 +274,8 @@ struct FactView: View {
                     // Color change
                     randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
                     randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
-                    
                 }
+                
                 
 //                // VStack for debugging
 //                VStack {
@@ -232,6 +302,7 @@ struct ViewOffsetKey: PreferenceKey {
 }
 
 struct FactView_Previews: PreviewProvider {
+    static var text = "hi"
     static var previews: some View {
         NavigationView {
             FactView()
