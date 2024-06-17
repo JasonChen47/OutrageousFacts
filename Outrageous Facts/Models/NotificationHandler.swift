@@ -95,9 +95,9 @@ extension NotificationHandler {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.day = date
-        dateComponents.hour = 21
-        dateComponents.minute = 8
-        dateComponents.second = 15
+        dateComponents.hour = 12
+        dateComponents.minute = 47
+        dateComponents.second = 0
         
         // For actual implementation
         let trigger = UNCalendarNotificationTrigger(

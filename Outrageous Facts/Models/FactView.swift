@@ -24,6 +24,7 @@ struct FactView: View {
     @State private var testString = ""
     @State private var toShowAlert : Bool = false
     @State private var refreshScreen: Bool = true
+    @State var scrolledID: Int?
     
     var body: some View {
         let gradientStart = FactView.colorArr[randColorIdx1]
@@ -121,25 +122,9 @@ struct FactView: View {
                     }
                     .padding()
                     Spacer()
-                    // Button for random fact
-//                    HStack {
-//                        Button(action: {
-//                            APIQuoteGen.checkFillArr()
-//                            quote = APIQuoteGen.quickQuote()
-//                            // Change the gradient colors
-//                            DispatchQueue.main.async {
-//                                randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
-//                                randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
-//                            }
-//                        }) {
-//                            Image(systemName: "rectangle.3.group.bubble.left")
-//                        }
-//                    }
-//                    .foregroundColor(.white)
-//                    .font(.system(size: 28))
                     // Link to learn more
-                    if (APIQuoteGen.linkArr[selectedPageIndex] != "") {
-                        Link("Learn More", destination: URL(string: "\(APIQuoteGen.linkArr[selectedPageIndex])")!)
+                    if (APIQuoteGen.linkArr[scrolledID ?? 0] != "") {
+                        Link("Learn More", destination: URL(string: "\(APIQuoteGen.linkArr[scrolledID ?? 0])")!)
                             .foregroundColor(.white)
                             .padding(7)
                             .background(
@@ -360,40 +345,73 @@ struct FactView: View {
 //                    .padding()
 //                    .frame(width: screenWidth*0.85, height: screenWidth*0.85, alignment: .center)
                 // Historical fact with paging
-                TabView(selection: $selectedPageIndex) {
-                    ForEach(Array(APIQuoteGen.quoteArr.enumerated()), id: \.element) { index, fact in
-                        Text(fact)
-                            .foregroundColor(.white)
-                            .font(.system(size: 20))
-                            .multilineTextAlignment(.center)
-                            .padding()
-                            .frame(width: screenWidth*0.85, height: screenWidth*0.85, alignment: .center)
-                            .tag(index)
-                    }
+                
+                
+                GeometryReader { geo in
+                    if #available(iOS 17.0, *) {
+                        ScrollView (.horizontal) {
+                            HStack (spacing: 0) {
+                                ForEach(Array(APIQuoteGen.quoteArr.enumerated()), id: \.offset) { index, fact in
+                                    Text(fact)
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 20))
+                                        .multilineTextAlignment(.center)
+                                        .padding(geo.size.width*0.1)
+                                        .frame(width: geo.size.width, height: geo.size.height)
+//                                        .tag(index)
+//                                    Text("View: \(index)")
+//                                        .frame(width: geo.size.width, height: geo.size.height)
+//                                        .id(index)
+                                }
+                            }
+                            .scrollTargetLayout()
+                        }
+                        .scrollPosition(id: $scrolledID)
+                        .scrollTargetBehavior(.paging)
+                        .onChange(of: scrolledID) {
+                            APIQuoteGen.addFact()
+                            randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
+                            randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
+                        }
+                    } else {
+                        // Fallback on earlier versions
+                    }  //  <----
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                .onChange(of: selectedPageIndex) { newValue in
-                    // Only add if you reach an index greater than 2 less than the end of the array and swiping right
-                    if APIQuoteGen.quoteArr.count < 3 {
-                        APIQuoteGen.quoteArr.append(RandQuote.getQuote())
-                        APIQuoteGen.linkArr.append("")
-                    }
-                    if newValue > (APIQuoteGen.quoteArr.count - 4)
-                        && newValue > oldSelectedPageIndex
-                    {
-                        // Generate new quote at end of array
-                        APIQuoteGen.addFact()
-                        testString = "added"
-                    }
-                    else {
-                        testString = "nope"
-                    }
-                    // To determine if swiping right
-                    oldSelectedPageIndex = newValue
-                    // Color change
-                    randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
-                    randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
-                }
+//                TabView(selection: $selectedPageIndex) {
+//                    ForEach(Array(APIQuoteGen.quoteArr.enumerated()), id: \.element) { index, fact in
+//                        Text(fact)
+//                            .foregroundColor(.white)
+//                            .font(.system(size: 20))
+//                            .multilineTextAlignment(.center)
+//                            .padding()
+//                            .frame(width: screenWidth*0.85, height: screenWidth*0.85, alignment: .center)
+//                            .tag(index)
+//                    }
+//                }
+//                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+//                .onChange(of: selectedPageIndex) { newValue in
+//                    // Only add if you reach an index greater than 2 less than the end of the array and swiping right
+////                    if APIQuoteGen.quoteArr.count < 3 {
+////                        APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+////                        APIQuoteGen.linkArr.append("")
+////                    }
+////                    if newValue > (APIQuoteGen.quoteArr.count - 4)
+////                        && newValue > oldSelectedPageIndex
+////                    {
+////                        // Generate new quote at end of array
+////                        APIQuoteGen.addFact()
+////                        testString = "added"
+////                    }
+////                    else {
+////                        testString = "nope"
+////                    }
+////                    // To determine if swiping right
+////                    oldSelectedPageIndex = newValue
+//                    // Color change
+//                    APIQuoteGen.addFact()
+//                    randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
+//                    randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
+//                }
                 
                 
 //                // VStack for debugging
