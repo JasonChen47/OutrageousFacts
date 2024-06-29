@@ -24,7 +24,8 @@ struct FactView: View {
     @State private var testString = ""
     @State private var toShowAlert : Bool = false
     @State private var refreshScreen: Bool = true
-    @State var scrolledID: Int?
+//    @State var scrolledID: Int?
+    @State var scrolledID: Int? = 0
     
     var body: some View {
         let gradientStart = FactView.colorArr[randColorIdx1]
@@ -162,16 +163,31 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+//                // Add fact if start with index 0 because it won't add during task for some reason
+//                if selectedPageIndex == 0 {
+//                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+//                    APIQuoteGen.linkArr.append("")
+//                }
+//                // If you start at index 0, it won't register a change, so do this to ensure change is registered
+//                selectedPageIndex = -1
+//                selectedPageIndex += 1
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
                 // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
+//                scrolledID = -1
+//                scrolledID += 1
+//                scrolledID = 0
+//                APIQuoteGen.addFact()
+//                APIQuoteGen.addFact()
             }
         }
         .onReceive(pub2){ data in

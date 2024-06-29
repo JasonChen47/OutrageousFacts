@@ -95,8 +95,8 @@ extension NotificationHandler {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.day = date
-        dateComponents.hour = 12
-        dateComponents.minute = 47
+        dateComponents.hour = 15
+        dateComponents.minute = 15
         dateComponents.second = 0
         
         // For actual implementation
