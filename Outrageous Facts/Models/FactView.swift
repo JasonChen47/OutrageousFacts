@@ -25,7 +25,7 @@ struct FactView: View {
     @State private var toShowAlert : Bool = false
     @State private var refreshScreen: Bool = true
 //    @State var scrolledID: Int?
-    @State var scrolledID: Int? = 0
+    @State var scrolledID: Int? 
     
     var body: some View {
         let gradientStart = FactView.colorArr[randColorIdx1]
@@ -166,14 +166,6 @@ struct FactView: View {
                 print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
-//                // Add fact if start with index 0 because it won't add during task for some reason
-//                if selectedPageIndex == 0 {
-//                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
-//                    APIQuoteGen.linkArr.append("")
-//                }
-//                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-//                selectedPageIndex = -1
-//                selectedPageIndex += 1
                 scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
                 if scrolledID == 0 {
@@ -182,12 +174,6 @@ struct FactView: View {
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-//                scrolledID = -1
-//                scrolledID += 1
-//                scrolledID = 0
-//                APIQuoteGen.addFact()
-//                APIQuoteGen.addFact()
             }
         }
         .onReceive(pub2){ data in
@@ -196,16 +182,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         .onReceive(pub3){ data in
@@ -214,16 +201,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         .onReceive(pub4){ data in
@@ -232,16 +220,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         .onReceive(pub5){ data in
@@ -250,16 +239,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         .onReceive(pub6){ data in
@@ -268,16 +258,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         .onReceive(pub7){ data in
@@ -286,16 +277,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         .onReceive(pub8){ data in
@@ -304,16 +296,17 @@ struct FactView: View {
             // name received
             if let content = (data.object as? UNNotificationContent){
                 print("title:\(content.title), subtitle:\(content.body)")
+                print("received pub")
                 APIQuoteGen.quoteArr = [content.body]
                 APIQuoteGen.linkArr = [""]
+                scrolledID = 0
                 // Add fact if start with index 0 because it won't add during task for some reason
-                if selectedPageIndex == 0 {
+                if scrolledID == 0 {
+                    APIQuoteGen.quoteArr.append(RandQuote.getQuote())
+                    APIQuoteGen.linkArr.append("")
                     APIQuoteGen.quoteArr.append(RandQuote.getQuote())
                     APIQuoteGen.linkArr.append("")
                 }
-                // If you start at index 0, it won't register a change, so do this to ensure change is registered
-                selectedPageIndex = -1
-                selectedPageIndex += 1
             }
         }
         // Start adding async fact
@@ -388,57 +381,12 @@ struct FactView: View {
                             APIQuoteGen.addFact()
                             randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
                             randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
+//                            print("Array length: \(APIQuoteGen.quoteArr.count)")
                         }
                     } else {
                         // Fallback on earlier versions
                     }  //  <----
                 }
-//                TabView(selection: $selectedPageIndex) {
-//                    ForEach(Array(APIQuoteGen.quoteArr.enumerated()), id: \.element) { index, fact in
-//                        Text(fact)
-//                            .foregroundColor(.white)
-//                            .font(.system(size: 20))
-//                            .multilineTextAlignment(.center)
-//                            .padding()
-//                            .frame(width: screenWidth*0.85, height: screenWidth*0.85, alignment: .center)
-//                            .tag(index)
-//                    }
-//                }
-//                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//                .onChange(of: selectedPageIndex) { newValue in
-//                    // Only add if you reach an index greater than 2 less than the end of the array and swiping right
-////                    if APIQuoteGen.quoteArr.count < 3 {
-////                        APIQuoteGen.quoteArr.append(RandQuote.getQuote())
-////                        APIQuoteGen.linkArr.append("")
-////                    }
-////                    if newValue > (APIQuoteGen.quoteArr.count - 4)
-////                        && newValue > oldSelectedPageIndex
-////                    {
-////                        // Generate new quote at end of array
-////                        APIQuoteGen.addFact()
-////                        testString = "added"
-////                    }
-////                    else {
-////                        testString = "nope"
-////                    }
-////                    // To determine if swiping right
-////                    oldSelectedPageIndex = newValue
-//                    // Color change
-//                    APIQuoteGen.addFact()
-//                    randColorIdx1 = Int.random(in: 0...FactView.colorArr.count-1)
-//                    randColorIdx2 = Int.random(in: 0...FactView.colorArr.count-1)
-//                }
-                
-                
-//                // VStack for debugging
-//                VStack {
-//                    Text(testString)
-//                    Text("\(selectedPageIndex)")
-//                    Text("\(APIQuoteGen.quoteArr.count)")
-//                    Text("\(oldSelectedPageIndex)")
-//                }
-                
-                
             }
         )
     }

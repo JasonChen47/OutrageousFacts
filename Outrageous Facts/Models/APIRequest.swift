@@ -63,7 +63,7 @@ class APIRequest {
                 self.linkArr.append("")
             }
         }
-        print("The quoteArr count: \(self.quoteArr.count)")
+//        print("The quoteArr count: \(self.quoteArr.count)")
     }
     
     // Function to allow for try await call

@@ -84,8 +84,7 @@ extension NotificationHandler  {
 extension NotificationHandler {
     func addNotification(id : String, title : String, subtitle : String, link: String,
                          sound : UNNotificationSound = UNNotificationSound.default, date: Int) {
-        
-        
+
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -95,9 +94,11 @@ extension NotificationHandler {
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.day = date
-        dateComponents.hour = 15
-        dateComponents.minute = 15
-        dateComponents.second = 0
+        
+        // Change the time here for testing
+        dateComponents.hour = 17
+        dateComponents.minute = 44
+        dateComponents.second = 20
         
         // For actual implementation
         let trigger = UNCalendarNotificationTrigger(
